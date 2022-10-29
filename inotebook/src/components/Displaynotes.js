@@ -1,6 +1,7 @@
 import React from "react";
 
 var Displaynotes = ({ id, title, desc, deleteNote, updateNoteHTML, date }) => {
+  console.log("date", date);
   return (
     <>
       <div className="display_notes_container">
