@@ -65,7 +65,7 @@ var Notes = () => {
       console.log("res", res.length);
     } catch (err) {
       navigate("/login");
-      alert("Error occure while sending the notes data into the database");
+      alert("Error occure while sending the notes data into the database", err);
     }
   };
 
