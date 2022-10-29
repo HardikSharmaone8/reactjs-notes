@@ -35,11 +35,13 @@ var Notes = () => {
     try {
       e.preventDefault();
 
-      var { title, desc } = noteState;
+      var { title, desc, date } = noteState;
+
       setNoteState({
         ...noteState,
         status: true,
       });
+
       const responce = await fetch("/postnotes", {
         method: "POST",
         headers: {
@@ -48,9 +50,12 @@ var Notes = () => {
         body: JSON.stringify({
           title,
           desc,
+          date,
         }),
       });
+
       var res = await responce.json();
+      console.log("responce of adding or posting notes", res);
       setNoteState({
         title: "",
         desc: "",
@@ -82,7 +87,6 @@ var Notes = () => {
         title: "",
         desc: "",
         res: res.Notes,
-
         status: false,
       });
       console.log("Responce of delete notes", res);
@@ -111,6 +115,7 @@ var Notes = () => {
       title: res[0].Title,
       desc: res[0].Desc,
       res: [],
+      date: date,
       status: false,
     });
   };
@@ -119,7 +124,7 @@ var Notes = () => {
     try {
       e.preventDefault();
 
-      var { title, desc } = noteState;
+      var { title, desc, date } = noteState;
       setNoteState({
         ...noteState,
         status: true,
@@ -131,6 +136,7 @@ var Notes = () => {
         body: JSON.stringify({
           title,
           desc,
+          date,
         }),
       });
 
@@ -190,9 +196,10 @@ var Notes = () => {
           <form method="POST" className="update_notesform">
             <input
               type="text"
-              name="title"
+              name="date"
               value={noteState.date}
-              placeholder="Note Title"
+              readOnly
+              hidden
             ></input>
             <input
               type="text"
@@ -224,6 +231,14 @@ var Notes = () => {
           <div id="notes_text_container">
             <h2>Enter Your Notes</h2>
             <form method="POST" className="notesform">
+              <input
+                type="text"
+                name="date"
+                value={noteState.date}
+                readOnly
+                hidden
+              ></input>
+
               <input
                 type="text"
                 name="title"

@@ -20,7 +20,7 @@ var Displaynotes = ({ id, title, desc, deleteNote, updateNoteHTML, date }) => {
         <div className="notes_discription">
           <p>{desc}</p>
         </div>
-        <div className="data_time">{date}</div>
+        <div style={{ fontSize: "9px", float: "right" }}>{date}</div>
       </div>
     </>
   );

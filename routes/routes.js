@@ -75,12 +75,12 @@ router.get("/about", auth, async (req, res) => {
 
 router.post("/postnotes", auth, async (req, res) => {
   try {
-    var { title, desc } = req.body;
+    var { title, desc, date } = req.body;
     var Id = req.getId;
     var getuser = await User.findOne({ _id: Id });
 
     if (getuser) {
-      var getNotesData = await getuser.postNotesData(title, desc); //we call middleware function this postNotesData function defines in model folder
+      var getNotesData = await getuser.postNotesData(title, desc, date); //we call middleware function this postNotesData function defines in model folder
       await getuser.save();
       res.status(200).send(getNotesData);
       console.log("hello", getNotesData);
@@ -152,14 +152,20 @@ router.get("/update/:id", auth, async (req, res) => {
 
 router.post("/update/:id", auth, async (req, res) => {
   try {
-    var { title, desc } = req.body;
+    var { title, desc, date } = req.body;
     var getNoteId = req.params.id;
     var Id = req.getId;
     console.log("id is", Id);
     if (req.getUser) {
       var updated_responce = await User.updateOne(
         { _id: Id, "Notes._id": getNoteId },
-        { $set: { "Notes.$.Title": title, "Notes.$.Desc": desc } }
+        {
+          $set: {
+            "Notes.$.Title": title,
+            "Notes.$.Desc": desc,
+            "Notes.$.Date": date,
+          },
+        }
       );
       var finduser = await User.findOne({ _id: Id });
       console.log("updated", updated_responce);

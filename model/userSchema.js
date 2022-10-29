@@ -49,8 +49,8 @@ var userObj = new mongoose.Schema({
         required: true,
       },
       Date: {
-        type: Date,
-        default: new Date(),
+        type: String,
+        required: true,
       },
     },
   ],
@@ -87,8 +87,8 @@ userObj.methods.generateToken = async function () {
   return tokenGenerate;
 };
 
-userObj.methods.postNotesData = async function (title, desc) {
-  this.Notes = this.Notes.concat({ Title: title, Desc: desc });
+userObj.methods.postNotesData = async function (title, desc, date) {
+  this.Notes = this.Notes.concat({ Title: title, Desc: desc, Date: date });
   await this.save();
   return this.Notes;
 };
