@@ -250,6 +250,7 @@ var Notes = () => {
                     desc={value.Desc}
                     deleteNote={deleteNote}
                     updateNoteHTML={updateNoteHTML}
+                    date={value.Date}
                   />
                 );
               } else {

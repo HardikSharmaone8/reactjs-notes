@@ -1,6 +1,6 @@
 import React from "react";
 
-var Displaynotes = ({ id, title, desc, deleteNote, updateNoteHTML }) => {
+var Displaynotes = ({ id, title, desc, deleteNote, updateNoteHTML, date }) => {
   return (
     <>
       <div className="display_notes_container">
@@ -19,6 +19,7 @@ var Displaynotes = ({ id, title, desc, deleteNote, updateNoteHTML }) => {
         <div className="notes_discription">
           <p>{desc}</p>
         </div>
+        <div className="data_time">{date}</div>
       </div>
     </>
   );
