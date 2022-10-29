@@ -48,6 +48,10 @@ var userObj = new mongoose.Schema({
         type: String,
         required: true,
       },
+      Date: {
+        type: Date,
+        default: new Date(),
+      },
     },
   ],
   Date: {

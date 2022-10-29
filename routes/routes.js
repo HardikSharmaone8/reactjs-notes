@@ -80,7 +80,7 @@ router.post("/postnotes", auth, async (req, res) => {
     var getuser = await User.findOne({ _id: Id });
 
     if (getuser) {
-      var getNotesData = await getuser.postNotesData(title, desc, getuser.Date);
+      var getNotesData = await getuser.postNotesData(title, desc); //we call middleware function this postNotesData function defines in model folder
       await getuser.save();
       res.status(200).send(getNotesData);
       console.log("hello", getNotesData);

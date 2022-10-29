@@ -13,6 +13,7 @@ var Notes = () => {
     title: "",
     desc: "",
     res: [],
+    date: "",
     status: false,
   });
 
@@ -50,6 +51,7 @@ var Notes = () => {
         title: "",
         desc: "",
         res: res,
+        date: res.Date,
         status: false,
       });
       console.log("res", res.length);
@@ -77,6 +79,7 @@ var Notes = () => {
         title: "",
         desc: "",
         res: res.Notes,
+
         status: false,
       });
       console.log("Responce of delete notes", res);
@@ -162,9 +165,12 @@ var Notes = () => {
 
         var getres = await getresponce.json();
         console.log("Get Responce Getres ", getres.Notes);
+        console.log("Get Responce Getres ", getres.Notes.Date);
+
         setNoteState({
           ...noteState,
           res: getres.Notes,
+          date: getres.Notes.Date,
           status: false,
         });
       } catch (err) {
