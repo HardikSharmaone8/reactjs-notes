@@ -4,6 +4,9 @@ import Spinner from "./Spinner";
 import { useNavigate } from "react-router-dom";
 
 var Notes = () => {
+  const d = new Date();
+  const date = d.toLocaleString();
+
   var navigate = useNavigate();
   var [state, setState] = useState({
     id: "",
@@ -13,7 +16,7 @@ var Notes = () => {
     title: "",
     desc: "",
     res: [],
-    date: "",
+    date: date,
     status: false,
   });
 
@@ -31,6 +34,7 @@ var Notes = () => {
   const postNotes = async (e) => {
     try {
       e.preventDefault();
+
       var { title, desc } = noteState;
       setNoteState({
         ...noteState,
@@ -51,7 +55,6 @@ var Notes = () => {
         title: "",
         desc: "",
         res: res,
-        date: res.Date,
         status: false,
       });
       console.log("res", res.length);
@@ -115,6 +118,7 @@ var Notes = () => {
   var update_post_notes = async (e, id) => {
     try {
       e.preventDefault();
+
       var { title, desc } = noteState;
       setNoteState({
         ...noteState,
@@ -165,12 +169,10 @@ var Notes = () => {
 
         var getres = await getresponce.json();
         console.log("Get Responce Getres ", getres.Notes);
-        console.log("Get Responce Getres ", getres.Notes.Date);
 
         setNoteState({
           ...noteState,
           res: getres.Notes,
-          date: getres.Notes.Date,
           status: false,
         });
       } catch (err) {
@@ -186,6 +188,12 @@ var Notes = () => {
       {state.status ? (
         <div id="update_note">
           <form method="POST" className="update_notesform">
+            <input
+              type="text"
+              name="title"
+              value={noteState.date}
+              placeholder="Note Title"
+            ></input>
             <input
               type="text"
               name="title"
