@@ -42,7 +42,7 @@ var Notes = () => {
       });
 
       var { title, desc, date } = noteState;
-
+      console.log("before sending responce", date);
       const responce = await fetch("/postnotes", {
         method: "POST",
         headers: {
@@ -54,7 +54,7 @@ var Notes = () => {
           date,
         }),
       });
-
+      console.log("before getting responce");
       var res = await responce.json();
       console.log("responce of adding or posting notes", res);
       setNoteState({
