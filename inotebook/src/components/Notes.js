@@ -203,6 +203,7 @@ var Notes = () => {
               name="date"
               value={noteState.date}
               readOnly
+              hidden
             ></input>
             <input
               type="text"
@@ -239,6 +240,7 @@ var Notes = () => {
                 name="date"
                 value={noteState.date}
                 readOnly
+                hidden
               ></input>
 
               <input
