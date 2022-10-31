@@ -42,6 +42,7 @@ var Signup = () => {
       var { name, email, mobile, profession, password, confirmpassword } =
         registerState;
       console.log("submit ", submitStatus);
+      console.log("Valdiation errr ", validationErr);
 
       //if validation is ok at the time of  registration then we post data into database
       if (submitStatus) {

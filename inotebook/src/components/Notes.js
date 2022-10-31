@@ -42,10 +42,6 @@ var Notes = () => {
       });
 
       var { title, desc, date } = noteState;
-      console.log("before sending responce", date);
-      console.log("before sending responce", title);
-      console.log("before sending responce", desc);
-
       const responce = await fetch("/postnotes", {
         method: "POST",
         headers: {
