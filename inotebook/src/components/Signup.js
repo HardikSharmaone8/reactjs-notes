@@ -157,14 +157,12 @@ var Signup = () => {
 
   useEffect(() => {
     console.log("validation", validationErr);
-    if (
-      validationErr.name &&
-      validationErr.email &&
-      validationErr.mobile &&
-      validationErr.password &&
-      validationErr.confirmpassword
-    ) {
-      setSubmitStatus(true);
+    if (validationErr.name && validationErr.email) {
+      if (validationErr.mobile && validationErr.password) {
+        if (validationErr.confirmpassword) {
+          setSubmitStatus(true);
+        }
+      }
     }
   }, [validationErr]);
 
