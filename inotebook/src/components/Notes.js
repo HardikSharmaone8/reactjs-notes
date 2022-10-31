@@ -59,6 +59,7 @@ var Notes = () => {
       setNoteState({
         title: "",
         desc: "",
+        date: "",
         res: res,
         status: false,
       });
@@ -85,6 +86,7 @@ var Notes = () => {
       setNoteState({
         title: "",
         desc: "",
+        date: "",
         res: res.Notes,
         status: false,
       });
