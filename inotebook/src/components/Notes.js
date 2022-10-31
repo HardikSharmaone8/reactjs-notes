@@ -4,9 +4,6 @@ import Spinner from "./Spinner";
 import { useNavigate } from "react-router-dom";
 
 var Notes = () => {
-  const d = new Date();
-  const date = d.toLocaleString();
-
   var navigate = useNavigate();
   var [state, setState] = useState({
     id: "",
@@ -16,7 +13,7 @@ var Notes = () => {
     title: "",
     desc: "",
     res: [],
-    date: date,
+    date: "",
     status: false,
   });
 
@@ -35,12 +32,16 @@ var Notes = () => {
     try {
       e.preventDefault();
 
-      var { title, desc, date } = noteState;
+      const d = new Date();
+      const post_date = d.toLocaleString();
 
       setNoteState({
         ...noteState,
+        date: post_date,
         status: true,
       });
+
+      var { title, desc, date } = noteState;
 
       const responce = await fetch("/postnotes", {
         method: "POST",
@@ -116,7 +117,6 @@ var Notes = () => {
       title: res[0].Title,
       desc: res[0].Desc,
       res: [],
-      date: date,
       status: false,
     });
   };
