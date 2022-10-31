@@ -21,9 +21,13 @@ var Notes = () => {
     var name = e.target.name;
     var value = e.target.value;
 
+    const d = new Date();
+    const post_date = d.toLocaleString();
+
     setNoteState({
       ...noteState,
       [name]: value,
+      date: post_date,
     });
   };
 
@@ -32,12 +36,8 @@ var Notes = () => {
     try {
       e.preventDefault();
 
-      const d = new Date();
-      const post_date = d.toLocaleString();
-
       setNoteState({
         ...noteState,
-        date: post_date,
         status: true,
       });
 
