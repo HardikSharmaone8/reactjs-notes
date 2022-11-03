@@ -6,6 +6,8 @@ var Navbar = () => {
   var { state, dispatch } = useContext(UserContext);
   console.log("State value", state);
 
+  document.querySelector(".fa-bars").style.display = "none"; //don't display fa-bars icon in desktop
+
   var addsidebars = (e) => {
     e.preventDefault();
     document.getElementById("sidebar").style.marginLeft = "0px";
