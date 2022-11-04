@@ -162,6 +162,12 @@ var Signup = () => {
   };
 
   useEffect(() => {
+    console.log(validationErr.name === true && validationErr.email === true);
+    console.log(
+      validationErr.mobile === true && validationErr.password === true
+    );
+    console.log(validationErr.confirmpassword === true);
+
     if (validationErr.name === true && validationErr.email === true) {
       if (validationErr.mobile === true && validationErr.password === true) {
         if (validationErr.confirmpassword === true) {
