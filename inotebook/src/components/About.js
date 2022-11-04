@@ -29,11 +29,9 @@ var About = () => {
         Mobile: res.Mobile,
         Profession: res.Profession,
       });
-      console.log("responce is", res);
-      if (!res) {
-        alert("Please login first..after using about page");
-      }
+      // console.log("responce is", res);
     } catch (err) {
+      alert("Please login first..after using about page");
       navigate("/login");
     }
   };

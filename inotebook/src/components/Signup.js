@@ -25,6 +25,7 @@ var Signup = () => {
   });
 
   var [submitStatus, setSubmitStatus] = useState(false);
+
   var inputEvent = (e) => {
     var value = e.target.value;
     var name = e.target.name;
@@ -39,6 +40,7 @@ var Signup = () => {
   var submitRegister = async (e) => {
     try {
       e.preventDefault();
+
       setValidationErr(validation());
 
       var { name, email, mobile, profession, password, confirmpassword } =
@@ -49,6 +51,8 @@ var Signup = () => {
       //if validation is ok at the time of  registration then we post data into database
       if (submitStatus) {
         setProcess(true);
+
+        //firstly i check that user enter email at the time of registration is already exist of not in our database...
         var ress = await fetch("/checkemail", {
           method: "POST",
           headers: {
@@ -127,7 +131,6 @@ var Signup = () => {
       errors.name = "Name Must be greater than 2 charactors";
     } else if (!registerState.name.match(/^[a-zA-Z" "]+$/)) {
       errors.name = "Please Enter Charactors Only in Name Field";
-      console.log("hello");
     } else {
       errors.name = true;
     }
