@@ -175,7 +175,11 @@ var Signup = () => {
   return (
     <>
       {process ? (
-        <Spinner />
+        <center>
+          <h1 style={{ marginTop: "auto" }}>
+            <Spinner />
+          </h1>
+        </center>
       ) : (
         <div id="register_container">
           <div className="register_semicontainer">
