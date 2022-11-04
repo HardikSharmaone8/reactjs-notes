@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
+import Spinner from "./Spinner";
 
 var Signup = () => {
   var navigate = useNavigate();
   var { state, dispatch } = useContext(UserContext);
+  var [process, setProcess] = useState(false);
   var [registerState, setRegisterState] = useState({
     name: "",
     email: "",
@@ -37,6 +39,9 @@ var Signup = () => {
   var submitRegister = async (e) => {
     try {
       e.preventDefault();
+
+      setProcess(true);
+
       setValidationErr(validation());
 
       var { name, email, mobile, profession, password, confirmpassword } =
@@ -92,6 +97,9 @@ var Signup = () => {
 
           var res = await getRegisterData.json();
           console.log("after fetching", res);
+
+          setProcess(false);
+
           if (!res) {
             alert(
               "Your Registration Not Done Yet.......PLease Try Again Later"
@@ -173,95 +181,109 @@ var Signup = () => {
 
   return (
     <>
-      <div id="register_container">
-        <div className="register_semicontainer">
-          <div className="register_form">
-            <h1>Sign up</h1>
+      {process ? (
+        <Spinner />
+      ) : (
+        <div id="register_container">
+          <div className="register_semicontainer">
+            <div className="register_form">
+              <h1>Sign up</h1>
 
-            <form method="POST" className="register_form_input">
-              <input
-                type="text"
-                name="name"
-                value={registerState.name}
-                onChange={inputEvent}
-                placeholder="Your name"
-                required
-              ></input>
-              <p style={{ color: "red", fontSize: "10px", marginTop: "-1px" }}>
-                {validationErr.name}
-              </p>
-              <input
-                type="email"
-                name="email"
-                value={registerState.email}
-                onChange={inputEvent}
-                placeholder="Your email"
-                required
-              ></input>
-              <p style={{ color: "red", fontSize: "10px", marginTop: "-1px" }}>
-                {validationErr.email}
-              </p>
-              <input
-                type="number"
-                name="mobile"
-                value={registerState.mobile}
-                onChange={inputEvent}
-                placeholder="mobile Number"
-                required
-              ></input>
-              <p style={{ color: "red", fontSize: "10px", marginTop: "-1px" }}>
-                {validationErr.mobile}
-              </p>
-              <input
-                type="text"
-                name="profession"
-                value={registerState.profession}
-                onChange={inputEvent}
-                placeholder="Your profession"
-                required
-              ></input>
-              <input
-                type="password"
-                name="password"
-                value={registerState.password}
-                onChange={inputEvent}
-                placeholder="Your password"
-                required
-              ></input>
-              <p style={{ color: "red", fontSize: "10px", marginTop: "-1px" }}>
-                {validationErr.password}
-              </p>
+              <form method="POST" className="register_form_input">
+                <input
+                  type="text"
+                  name="name"
+                  value={registerState.name}
+                  onChange={inputEvent}
+                  placeholder="Your name"
+                  required
+                ></input>
+                <p
+                  style={{ color: "red", fontSize: "10px", marginTop: "-1px" }}
+                >
+                  {validationErr.name}
+                </p>
+                <input
+                  type="email"
+                  name="email"
+                  value={registerState.email}
+                  onChange={inputEvent}
+                  placeholder="Your email"
+                  required
+                ></input>
+                <p
+                  style={{ color: "red", fontSize: "10px", marginTop: "-1px" }}
+                >
+                  {validationErr.email}
+                </p>
+                <input
+                  type="number"
+                  name="mobile"
+                  value={registerState.mobile}
+                  onChange={inputEvent}
+                  placeholder="mobile Number"
+                  required
+                ></input>
+                <p
+                  style={{ color: "red", fontSize: "10px", marginTop: "-1px" }}
+                >
+                  {validationErr.mobile}
+                </p>
+                <input
+                  type="text"
+                  name="profession"
+                  value={registerState.profession}
+                  onChange={inputEvent}
+                  placeholder="Your profession"
+                  required
+                ></input>
+                <input
+                  type="password"
+                  name="password"
+                  value={registerState.password}
+                  onChange={inputEvent}
+                  placeholder="Your password"
+                  required
+                ></input>
+                <p
+                  style={{ color: "red", fontSize: "10px", marginTop: "-1px" }}
+                >
+                  {validationErr.password}
+                </p>
 
-              <input
-                type="password"
-                name="confirmpassword"
-                value={registerState.confirmpassword}
-                onChange={inputEvent}
-                placeholder="confirm Your password"
-                required
-              ></input>
-              <p style={{ color: "red", fontSize: "10px", marginTop: "-1px" }}>
-                {validationErr.confirmpassword}
-              </p>
+                <input
+                  type="password"
+                  name="confirmpassword"
+                  value={registerState.confirmpassword}
+                  onChange={inputEvent}
+                  placeholder="confirm Your password"
+                  required
+                ></input>
+                <p
+                  style={{ color: "red", fontSize: "10px", marginTop: "-1px" }}
+                >
+                  {validationErr.confirmpassword}
+                </p>
 
-              <input
-                type="submit"
-                value="Register"
-                id="register_register_submit"
-                onClick={submitRegister}
-              ></input>
-            </form>
-          </div>
+                <input
+                  type="submit"
+                  value="Register"
+                  id="register_register_submit"
+                  onClick={submitRegister}
+                ></input>
+              </form>
+            </div>
 
-          <div>
-            <img
-              className="register_image"
-              src="./image/register.jpg"
-              alt="register"
-            ></img>
+            <div>
+              <img
+                className="register_image"
+                src="./image/register.jpg"
+                alt="register"
+              ></img>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
