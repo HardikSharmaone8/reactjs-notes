@@ -46,10 +46,9 @@ var Signup = () => {
 
       console.log("submit ", submitStatus);
 
-      setProcess(true);
-
       //if validation is ok at the time of  registration then we post data into database
       if (submitStatus) {
+        setProcess(true);
         var ress = await fetch("/checkemail", {
           method: "POST",
           headers: {
