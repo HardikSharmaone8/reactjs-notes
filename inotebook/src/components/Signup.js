@@ -39,15 +39,12 @@ var Signup = () => {
   var submitRegister = async (e) => {
     try {
       e.preventDefault();
-
-      setProcess(true);
-
       setValidationErr(validation());
 
       var { name, email, mobile, profession, password, confirmpassword } =
         registerState;
       console.log("submit ", submitStatus);
-
+      setProcess(true);
       //if validation is ok at the time of  registration then we post data into database
       if (submitStatus) {
         var ress = await fetch("/checkemail", {
