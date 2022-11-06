@@ -22,10 +22,8 @@ var Logout = () => {
         console.log("responce", responce);
 
         if (responce) {
+          alert("Logout Successful..");
           navigate("/login");
-          toast.success("Logout Successful..", {
-            theme: " colored",
-          });
         }
       };
       getResponse();

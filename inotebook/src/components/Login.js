@@ -50,12 +50,8 @@ var Login = () => {
         toast.error("Your Login Not Done Yet..PLease Try Again Later");
       } else {
         dispatch({ type: "USER", payload: true });
+        alert("Login Successful..");
         navigate("/");
-      }
-      if (ress) {
-        toast.success("Login Successful..", {
-          theme: " colored",
-        });
       }
     } catch (err) {
       toast.error("Please Check your Login Details", {

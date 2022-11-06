@@ -33,7 +33,7 @@ var About = () => {
       });
       // console.log("responce is", res);
     } catch (err) {
-      toast.warn("Please login first..after using about page");
+      alert("Please login first...");
       navigate("/login");
     }
   };
