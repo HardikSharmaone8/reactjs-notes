@@ -112,9 +112,12 @@ var Signup = () => {
             navigate("/signup");
           } else {
             dispatch({ type: "USER", payload: true });
-            alert("Registration Done Succesfully");
             navigate("/");
           }
+
+          toast.success("Registration Done Succesfully", {
+            theme: " colored",
+          });
         }
       }
     } catch (err) {
