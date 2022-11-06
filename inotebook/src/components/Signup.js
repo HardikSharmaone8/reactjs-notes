@@ -112,7 +112,7 @@ var Signup = () => {
             navigate("/signup");
           } else {
             dispatch({ type: "USER", payload: true });
-            toast.success("Registration Done Succesfully");
+            alert("Registration Done Succesfully");
             navigate("/");
           }
         }

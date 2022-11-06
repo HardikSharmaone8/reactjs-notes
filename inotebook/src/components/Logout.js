@@ -22,7 +22,7 @@ var Logout = () => {
         console.log("responce", responce);
 
         if (responce) {
-          toast.success("successfully Logout..");
+          alert("successfully Logout..");
           navigate("/login");
         }
       };

@@ -51,9 +51,7 @@ var Login = () => {
       } else {
         dispatch({ type: "USER", payload: true });
         alert("Login Successfully");
-        toast.success("Your Login Successfully");
         navigate("/");
-        toast.success("Your Login Successfully1");
       }
     } catch (err) {
       toast.error("Please Check your Login Details", {
