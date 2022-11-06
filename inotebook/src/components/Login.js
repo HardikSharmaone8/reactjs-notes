@@ -51,11 +51,10 @@ var Login = () => {
       } else {
         dispatch({ type: "USER", payload: true });
         navigate("/");
+        toast.success("Login Successful..", {
+          theme: " colored",
+        });
       }
-
-      toast.success("Login Successful..", {
-        theme: " colored",
-      });
     } catch (err) {
       toast.error("Please Check your Login Details", {
         theme: "colored",
