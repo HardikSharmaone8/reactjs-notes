@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../App";
+import "react-toastify/dist/ReactToastify.css";
 
 var Navbar = () => {
   var { state, dispatch } = useContext(UserContext);

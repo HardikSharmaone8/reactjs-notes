@@ -86,6 +86,10 @@ var Notes = () => {
       });
 
       var res = await findNote.json();
+      if (res) {
+        toast.success("Successfully Deleted..");
+        console.log("delete");
+      }
       setNoteState({
         title: "",
         desc: "",
@@ -114,6 +118,11 @@ var Notes = () => {
 
     var res = await findNote.json();
     console.log("res", res);
+
+    if (res) {
+      toast.success("Successfully Updated..");
+      console.log("Updated");
+    }
 
     setNoteState({
       title: res[0].Title,
