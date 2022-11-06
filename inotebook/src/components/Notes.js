@@ -187,7 +187,7 @@ var Notes = () => {
           status: false,
         });
       } catch (err) {
-        toast.warn("Please Login First....");
+        alert("Please Login First....");
         navigate("/login");
       }
     };
