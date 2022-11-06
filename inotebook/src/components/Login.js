@@ -51,6 +51,7 @@ var Login = () => {
       } else {
         dispatch({ type: "USER", payload: true });
         toast.success("Login Done Succesfully");
+        navigate("/");
       }
     } catch (err) {
       toast.error("Please Check your Login Details");
@@ -60,43 +61,41 @@ var Login = () => {
 
   return (
     <>
-      <div>
-        <div id="register_container">
-          <div className="login_semicontainer">
-            <div className="login_image_container">
-              <img
-                className="login_image"
-                src="./image/login.jpg"
-                alt="login"
-              ></img>
-            </div>
-            <div className="login_form">
-              <h1>Sign In</h1>
-              <form method="POST" className="register_form_input">
-                <input
-                  name="email"
-                  value={loginState.email}
-                  type="email"
-                  onChange={inputEvent}
-                  placeholder="Your Email"
-                  required
-                ></input>
-                <input
-                  name="password"
-                  value={loginState.password}
-                  type="password"
-                  onChange={inputEvent}
-                  placeholder="Your Password"
-                  required
-                ></input>
-                <input
-                  type="submit"
-                  id="register_login_submit"
-                  onClick={PostData}
-                  value="LogIn"
-                ></input>
-              </form>
-            </div>
+      <div id="register_container">
+        <div className="login_semicontainer">
+          <div className="login_image_container">
+            <img
+              className="login_image"
+              src="./image/login.jpg"
+              alt="login"
+            ></img>
+          </div>
+          <div className="login_form">
+            <h1>Sign In</h1>
+            <form method="POST" className="register_form_input">
+              <input
+                name="email"
+                value={loginState.email}
+                type="email"
+                onChange={inputEvent}
+                placeholder="Your Email"
+                required
+              ></input>
+              <input
+                name="password"
+                value={loginState.password}
+                type="password"
+                onChange={inputEvent}
+                placeholder="Your Password"
+                required
+              ></input>
+              <input
+                type="submit"
+                id="register_login_submit"
+                onClick={PostData}
+                value="LogIn"
+              ></input>
+            </form>
           </div>
         </div>
         <ToastContainer />
