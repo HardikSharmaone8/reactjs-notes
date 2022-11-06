@@ -51,6 +51,8 @@ var Login = () => {
       } else {
         dispatch({ type: "USER", payload: true });
         navigate("/");
+      }
+      if (ress) {
         toast.success("Login Successful..", {
           theme: " colored",
         });
