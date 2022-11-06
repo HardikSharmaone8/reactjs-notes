@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
 
 var Home = () => {
   var [userState, setUserState] = useState({

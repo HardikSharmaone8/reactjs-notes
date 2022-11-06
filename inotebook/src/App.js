@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import { Routes, Route } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
