@@ -46,12 +46,10 @@ var Login = () => {
       console.log("asdfaklsjdfa", ress.status);
       if (ress.status === 500 || !ress) {
         console.log("asdfaklsjdfa", ress.status);
-
         toast.error("Your Login Not Done Yet..PLease Try Again Later");
       } else {
         dispatch({ type: "USER", payload: true });
-        toast.success("Login Done Succesfully");
-        navigate("/");
+        toast.success("Login Successfully");
       }
     } catch (err) {
       toast.error("Please Check your Login Details");
