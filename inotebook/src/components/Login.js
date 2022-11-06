@@ -49,11 +49,13 @@ var Login = () => {
         console.log("asdfaklsjdfa", ress.status);
         toast.error("Your Login Not Done Yet..PLease Try Again Later");
       } else {
-        toast.success("Login Successfully");
         dispatch({ type: "USER", payload: true });
+        toast.success("Login Successfully");
       }
     } catch (err) {
-      toast.error("Please Check your Login Details");
+      toast.error("Please Check your Login Details", {
+        theme: "colored",
+      });
       console.log("Error occured while post logindata into login page", err);
     }
   };
