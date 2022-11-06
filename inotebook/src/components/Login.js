@@ -102,8 +102,8 @@ var Login = () => {
             </form>
           </div>
         </div>
-        <ToastContainer />
       </div>
+      <ToastContainer />
     </>
   );
 };
