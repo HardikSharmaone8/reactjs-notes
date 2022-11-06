@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../App";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 var Logout = () => {
   var navigate = useNavigate();
@@ -20,16 +22,20 @@ var Logout = () => {
         console.log("responce", responce);
 
         if (responce) {
-          alert("successfully Logout..");
+          toast.success("successfully Logout..");
           navigate("/login");
         }
       };
       getResponse();
     }, []);
   } catch (err) {
-    alert("Error Occured while Logout from website");
+    toast.error("Error Occured while Logout from website");
   }
-  return <></>;
+  return (
+    <>
+      <ToastContainer />
+    </>
+  );
 };
 
 export default Logout;

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 var About = () => {
   var navigate = useNavigate();
@@ -31,7 +33,7 @@ var About = () => {
       });
       // console.log("responce is", res);
     } catch (err) {
-      alert("Please login first..after using about page");
+      toast.warn("Please login first..after using about page");
       navigate("/login");
     }
   };
@@ -50,6 +52,7 @@ var About = () => {
           <li>{userState.Mobile}</li>
           <li>{userState.Profession}</li>
         </ul>
+        <ToastContainer />
       </div>
     </>
   );

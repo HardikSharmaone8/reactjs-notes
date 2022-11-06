@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "../App";
 import Spinner from "./Spinner";
 
@@ -81,7 +83,7 @@ var Signup = () => {
 
         //when email or mobile present in database then user will not register his data into database
         if (mobile_responce || email_responce) {
-          alert("Email or Phone Number Already Present in our database");
+          toast.info("Email or Phone Number Already Present in our database");
         } else {
           var getRegisterData = await fetch("/register", {
             method: "POST",
@@ -104,19 +106,19 @@ var Signup = () => {
           setProcess(false);
 
           if (!res) {
-            alert(
+            toast.error(
               "Your Registration Not Done Yet.......PLease Try Again Later"
             );
             navigate("/signup");
           } else {
             dispatch({ type: "USER", payload: true });
-            alert("Registration Done Succesfully");
+            toast.success("Registration Done Succesfully");
             navigate("/");
           }
         }
       }
     } catch (err) {
-      alert("Your Registration Not Done Yet..PLease Try Again Later");
+      toast.error("Your Registration Not Done Yet..PLease Try Again Later");
       navigate("/signup");
       console.log("Error Occured while post the data to register page", err);
     }
@@ -282,6 +284,7 @@ var Signup = () => {
               ></img>
             </div>
           </div>
+          <ToastContainer />
         </div>
       )}
     </>

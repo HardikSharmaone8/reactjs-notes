@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../App";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 var Login = () => {
   var { state, dispatch } = useContext(UserContext);
@@ -45,14 +47,14 @@ var Login = () => {
       if (ress.status === 500 || !ress) {
         console.log("asdfaklsjdfa", ress.status);
 
-        alert("Your Login Not Done Yet..PLease Try Again Later");
+        toast.error("Your Login Not Done Yet..PLease Try Again Later");
       } else {
         dispatch({ type: "USER", payload: true });
-        alert("Login Done Succesfully");
+        toast.success("Login Done Succesfully");
         navigate("/");
       }
     } catch (err) {
-      alert("Please Check your Login Details");
+      toast.error("Please Check your Login Details");
       console.log("Error occured while post logindata into login page", err);
     }
   };
@@ -96,6 +98,7 @@ var Login = () => {
             </form>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </>
   );

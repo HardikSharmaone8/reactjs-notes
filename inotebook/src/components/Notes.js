@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Displaynotes from "./Displaynotes";
 import Spinner from "./Spinner";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 var Notes = () => {
   var navigate = useNavigate();
@@ -42,6 +44,7 @@ var Notes = () => {
       });
 
       var { title, desc, date } = noteState;
+
       const responce = await fetch("/postnotes", {
         method: "POST",
         headers: {
@@ -65,7 +68,7 @@ var Notes = () => {
       });
       console.log("res", res.length);
     } catch (err) {
-      alert(err);
+      toast.error(err);
     }
   };
 
@@ -92,7 +95,7 @@ var Notes = () => {
       });
       console.log("Responce of delete notes", res);
     } catch (err) {
-      alert("Error occure while deleting the note from the database");
+      toast.error("Error occure while deleting the note from the database");
     }
   };
 
@@ -125,11 +128,13 @@ var Notes = () => {
       e.preventDefault();
 
       var { title, desc, date } = noteState;
+
       setNoteState({
         ...noteState,
         status: true,
       });
       console.log("react js id", id);
+
       var findNote = await fetch(`/update/${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -154,7 +159,7 @@ var Notes = () => {
       });
       // console.log("Responce of updated notes", res);
     } catch (err) {
-      alert("Error occure while updating the note from the database");
+      toast.error("Error occure while updating the note from the database");
     }
   };
 
@@ -182,7 +187,7 @@ var Notes = () => {
           status: false,
         });
       } catch (err) {
-        alert("Please Login First....");
+        toast.warn("Please Login First....");
         navigate("/login");
       }
     };
@@ -287,6 +292,7 @@ var Notes = () => {
               }
             })}
           </div>
+          <ToastContainer />
         </div>
       )}
     </>
