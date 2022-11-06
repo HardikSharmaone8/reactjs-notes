@@ -44,12 +44,13 @@ var Login = () => {
       var ress = await responce.json();
       console.log("responce of post login deatils", ress);
       console.log("asdfaklsjdfa", ress.status);
+
       if (ress.status === 500 || !ress) {
         console.log("asdfaklsjdfa", ress.status);
         toast.error("Your Login Not Done Yet..PLease Try Again Later");
       } else {
-        dispatch({ type: "USER", payload: true });
         toast.success("Login Successfully");
+        dispatch({ type: "USER", payload: true });
       }
     } catch (err) {
       toast.error("Please Check your Login Details");
