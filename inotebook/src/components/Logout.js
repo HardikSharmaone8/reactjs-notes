@@ -23,10 +23,10 @@ var Logout = () => {
 
         if (responce) {
           navigate("/login");
+          toast.success("Logout Successful..", {
+            theme: " colored",
+          });
         }
-        toast.success("Logout Successful..", {
-          theme: " colored",
-        });
       };
       getResponse();
     }, []);
