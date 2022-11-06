@@ -33,8 +33,8 @@ var About = () => {
       });
       // console.log("responce is", res);
     } catch (err) {
-      navigate("/login");
       toast.warn("Please login first..after using about page");
+      navigate("/login");
     }
   };
   useEffect(() => {
