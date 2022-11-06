@@ -119,11 +119,6 @@ var Notes = () => {
     var res = await findNote.json();
     console.log("res", res);
 
-    if (res) {
-      toast.success("Successfully Updated..");
-      console.log("Updated");
-    }
-
     setNoteState({
       title: res[0].Title,
       desc: res[0].Desc,
@@ -166,6 +161,12 @@ var Notes = () => {
         id: "",
         status: false,
       });
+
+      if (res) {
+        toast.success("Successfully Updated..");
+        console.log("Updated");
+      }
+
       // console.log("Responce of updated notes", res);
     } catch (err) {
       toast.error("Error occure while updating the note from the database");
