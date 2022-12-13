@@ -1,10 +1,11 @@
 var mongoose = require("mongoose");
+var { JWT_SECRET, MONGOURL } = require("../config/keys");
 require("dotenv");
 
-console.log("database", process.env.DATABASE);
+console.log("database", MONGOURL);
 
 mongoose
-  .connect(process.env.DATABASE)
+  .connect(MONGOURL)
   .then(() => {
     console.log("Database Connection Succesfully established");
   })

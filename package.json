@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix inotebook && npm run build --prefix inotebook"
+    "start": "node app.js"
   },
   "author": "hardiksharma",
   "license": "ISC",
