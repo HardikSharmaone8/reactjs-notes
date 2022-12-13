@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 var validator = require("validator");
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcrypt");
+var { JWT_SECRET, MONGOURL } = require("../config/keys");
 require("dotenv").config();
 
 var userObj = new mongoose.Schema({
@@ -78,10 +79,7 @@ userObj.pre("save", async function (next) {
 });
 
 userObj.methods.generateToken = async function () {
-  var tokenGenerate = await jwt.sign(
-    { _id: this._id.toString() },
-    process.env.secreat_key
-  );
+  var tokenGenerate = await jwt.sign({ _id: this._id.toString() }, JWT_SECRET);
   this.Token = this.Token.concat({ token: tokenGenerate });
   await this.save();
   return tokenGenerate;
